@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Link } from "react-router"
-import { BarChart2, Menu, Settings, ShoppingBag, ShoppingCart } from "lucide-react";
+import { BarChart2, Menu, Settings, ShoppingBag, ShoppingCart, Home } from "lucide-react";
 
 const SIDEBAR_ITEMS = [
   {
-    name: "Dashboard",
-    icon: BarChart2,
+    name: "Home",
+    icon: Home,
     color: "#6366F1",
     href: "/",
   },
