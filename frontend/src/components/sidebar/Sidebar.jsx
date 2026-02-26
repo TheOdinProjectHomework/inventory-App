@@ -16,10 +16,10 @@ const SIDEBAR_ITEMS = [
     href: "/categories",
   },
   {
-    name: "Items",
+    name: "Cart",
     icon: ShoppingCart,
     color: "#F59E0B",
-    href: "/items",
+    href: "/cart",
   },
   {
     name: "Settings",
