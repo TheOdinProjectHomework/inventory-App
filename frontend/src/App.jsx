@@ -3,6 +3,7 @@ import './App.css'
 import Sidebar from './components/sidebar/Sidebar';
 import HomePage from './pages/HomePage';
 import Categories from './pages/Categories';
+import ItemsPage from './pages/ItemsPage';
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/categories" element={<Categories />} />
+        <Route path="categories/:category" element={<ItemsPage />} />
       </Routes>
     </div>
   );
