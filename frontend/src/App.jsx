@@ -1,14 +1,16 @@
+import { Route, Routes } from 'react-router';
 import './App.css'
 import Sidebar from './components/sidebar/Sidebar';
+import HomePage from './pages/HomePage';
 
 function App() {
 
   return (
     <div className='flex h-screen overflow-hidden'>
     <Sidebar />
-      <div className="navbar bg-base-100 shadow-sm">
-        <a className="btn btn-ghost text-xl">Inventory-App</a>
-      </div>
+    <Routes>
+      <Route path='/' element={<HomePage />}/>
+    </Routes>
     </div>
   );
 }
