@@ -2,26 +2,26 @@ import React from 'react'
 import Header from '../components/common/Header'
 import Card from '../components/Card/Card'
 
-const Categories = () => {
-
-    const categories = [
-      {
-        title: "Electronics",
-        amount: 124,
-      },
-      {
-        title: "Furniture",
-        amount: 45,
-      },
-      {
-        title: "Tools",
-        amount: 32,
-      },
-      {
-        title: "Kitchen",
-        amount: 67,
-      },
-    ];
+const Categories = ({ categories }) => {
+    // console.log(categories);
+    // const categories = [
+    //   {
+    //     title: "Electronics",
+    //     amount: 124,
+    //   },
+    //   {
+    //     title: "Furniture",
+    //     amount: 45,
+    //   },
+    //   {
+    //     title: "Tools",
+    //     amount: 32,
+    //   },
+    //   {
+    //     title: "Kitchen",
+    //     amount: 67,
+    //   },
+    // ];
 
 
   return (
