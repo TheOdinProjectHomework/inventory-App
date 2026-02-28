@@ -7,6 +7,7 @@ import ItemsPage from './pages/ItemsPage';
 import Cart from './pages/Cart';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import Settings from './pages/Settings';
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
         <Route path="/categories" element={<Categories categories={categories} />} />
         <Route path="/categories/:category" element={<ItemsPage cart={cart} setCart={setCart} />} />
         <Route path='/cart' element={<Cart cart={cart} />} />
+        <Route path='/settings' element={<Settings categories={categories} />} />
       </Routes>
     </div>
   );
