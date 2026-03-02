@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Header from '../components/common/Header'
+import toast from "react-hot-toast";
 
 const Settings = ({ categories }) => {
     const [catName, setCatName] = useState("");
@@ -7,10 +8,12 @@ const Settings = ({ categories }) => {
     const [picture, setPicture] = useState("");
     const [selectedCat, setSelectedCat] = useState("");
 
+    const notify = () => toast("Here is your toast.");
+
     const handleAddItem = async () => {
         if(!itemName.trim() || !picture.trim() || !selectedCat.trim()) {
-            alert("All fields are required");
-            return;
+            notify();
+            // return;
         }
 
         try {
@@ -25,7 +28,8 @@ const Settings = ({ categories }) => {
             });
 
             if(!response.ok) {
-                throw new Error("Failed to add new item");
+                toast.error("Failed to add new item");
+                // throw new Error("Failed to add new item");
             }
 
             const data = await response.json();
@@ -34,8 +38,9 @@ const Settings = ({ categories }) => {
             setPicture("");
             setSelectedCat("");
         } catch (error) {
-            console.log(error);
-            alert("Something went wrong");
+            // console.log(error);
+            // alert("Something went wrong");
+            toast.error(error);
         }
     }
 
