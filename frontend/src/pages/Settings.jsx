@@ -8,12 +8,12 @@ const Settings = ({ categories }) => {
     const [picture, setPicture] = useState("");
     const [selectedCat, setSelectedCat] = useState("");
 
-    const notify = () => toast("Here is your toast.");
+    const handleAddItem = async (e) => {
+        e.preventDefault();
 
-    const handleAddItem = async () => {
         if(!itemName.trim() || !picture.trim() || !selectedCat.trim()) {
-            notify();
-            // return;
+            toast.error("All fields are required");
+            return;
         }
 
         try {
@@ -29,7 +29,6 @@ const Settings = ({ categories }) => {
 
             if(!response.ok) {
                 toast.error("Failed to add new item");
-                // throw new Error("Failed to add new item");
             }
 
             const data = await response.json();
@@ -38,8 +37,6 @@ const Settings = ({ categories }) => {
             setPicture("");
             setSelectedCat("");
         } catch (error) {
-            // console.log(error);
-            // alert("Something went wrong");
             toast.error(error);
         }
     }
@@ -48,7 +45,7 @@ const Settings = ({ categories }) => {
         e.preventDefault();
 
         if(!catName.trim() || catName.trim().length < 3) {
-            alert("Field must be at least 3 characters");
+            toast.error("Field must be at least 3 characters");
             setCatName("");
             return;
         }
@@ -63,15 +60,14 @@ const Settings = ({ categories }) => {
             });
 
             if(!response.ok) {
-                throw new Error('Failed to create category');
+                toast.error("Failed to create new category");
             }
 
             const data = await response.json();
             console.log(data);
             setCatName("");
         } catch (error) {
-            console.log(error);
-            alert("Something went wrong");
+            toast.error(error);
         }
     }
 
