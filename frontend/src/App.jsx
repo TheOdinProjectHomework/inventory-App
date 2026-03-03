@@ -15,14 +15,20 @@ function App() {
   const [cart, setCart] = useState([]);
   const [categories, setCategories] = useState([]);
 
-  const getData = async () => {
-    const req = await fetch(`http://localhost:5000/api/category`);
-    const res = await req.json();
-    setCategories(res);
-  }
-
+  
   useEffect(() => {
+    const getData = async () => {
+      try {
+        const req = await fetch(`http://localhost:5000/api/category`);
+        const res = await req.json();
+        setCategories(res);
+      } catch (error) {
+        console.log("Error fetching categories: ", error);
+      }
+    };
+
     getData();
+    // needs to be called when an Item gets added
   }, []);
 
 

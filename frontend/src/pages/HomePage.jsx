@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 const HomePage = () => {
   return (
     <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center px-6">
-      <div className="max-w-2xl text-center space-y-6">
+      <div className="max-w-7xl text-center space-y-6">
         <h1 className="text-5xl font-bold">
           Welcome to inventory-App
         </h1>

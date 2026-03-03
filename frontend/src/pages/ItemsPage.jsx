@@ -1,25 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from 'react-router'
 import Header from '../components/common/Header';
 import ItemCard from '../components/Card/ItemCard';
+import { useState } from 'react';
 
 const ItemsPage = ({ cart, setCart }) => {
-    let { category } = useParams();
+    const [items, setItems] = useState([]);
 
-    const items = [
-        {
-        title: "Phone",
-        category: "Electronics"
-        },
-        {
-        title: "Car",
-        category: "Electronics"
-        },
-        {
-        title: "Sandwich",
-        category: "Kitchen"
-        },
-    ];
+    let { category } = useParams();
+    console.log(category);
+    
+    useEffect(() => {
+        const getItems = async () => {
+            try {
+                const req = await fetch(`http://localhost:5000/api/category/${category}/items`);
+                const res = await req.json();
+                setItems(res);
+            } catch (error) {
+                setItems([]);
+                console.log(`Error fetching items in category: ${category}`, error);
+            }
+        };
+        getItems();
+    }, []);
 
     const addToCart = (item) => {
         setCart([...cart, item]);
@@ -30,9 +33,10 @@ const ItemsPage = ({ cart, setCart }) => {
         <Header title={category} />
         <main className='max-w-7xl mx-auto p-6 lg:px-8 flex flex-wrap'>
             {
-                items.map((item, i) => (
-                    <ItemCard key={i} item={item} handleAdd={addToCart} />
-                ))
+                items.length > 0 ?
+                items.map((item) => (
+                    <ItemCard key={item._id} item={item} handleAdd={addToCart} />
+                )) : <p>Items not found</p>
             }
         </main>
     </div>

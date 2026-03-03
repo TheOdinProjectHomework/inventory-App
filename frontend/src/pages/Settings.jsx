@@ -33,6 +33,7 @@ const Settings = ({ categories }) => {
 
             const data = await response.json();
             console.log(data);
+            toast.success("New item added");
             setItemName("");
             setPicture("");
             setSelectedCat("");
@@ -64,6 +65,7 @@ const Settings = ({ categories }) => {
             }
 
             const data = await response.json();
+            toast.success("New category added");
             console.log(data);
             setCatName("");
         } catch (error) {
