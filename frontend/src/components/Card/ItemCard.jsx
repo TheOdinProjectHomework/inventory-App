@@ -1,20 +1,28 @@
 import React from 'react'
+import notFound from "../../assets/Image-not-found.png"
 
 const ItemCard = ({ item, handleAdd }) => {
-    const { title } = item;
+    const { name, image } = item;
+    console.log(item);
 
   return (
-    <div className="card bg-base-100 w-60 shadow-sm">
+    <div className="card bg-gray-800 w-55 shadow-sm m-2">
       <figure>
-        <img
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-          alt="Shoes"
+        <img className='w-54 h-48 object-cover rounded-t-lg'
+          src={
+            image?.trim()
+              ? image
+              : notFound
+          }
+          alt={name}
         />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">{title}</h2>
+        <h2 className="card-title">{name}</h2>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary" onClick={() => handleAdd(item)}>Buy Now</button>
+          <button className="btn btn-primary" onClick={() => handleAdd(item)}>
+            Buy Now
+          </button>
         </div>
       </div>
     </div>

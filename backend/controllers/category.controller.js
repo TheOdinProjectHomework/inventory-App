@@ -1,4 +1,5 @@
 import Category from "../model/category.model.js"
+import Item from "../model/item.model.js";
 
 export const getAllCategories = async (req, res) => {
     try {
@@ -10,6 +11,22 @@ export const getAllCategories = async (req, res) => {
     } catch (error) {
         console.log("Error getting all categories");
         res.status(500).json({ success: false, message: "No categories found"});
+    }
+}
+
+export const getCategoryItems = async (req, res) => {
+    try {
+        const categoryParam = req.params.category;
+        const categoryId = await Category.findOne({ name: categoryParam });
+        
+        if(!categoryId) return res.status(404).json({ success: false, message: "Category not found"});
+
+        const items = await Item.find({ category: categoryId._id });
+        if (items.length === 0) return res.status(404).json({ success: false,  message: "No items found in this category" });
+        res.status(200).json(items);
+    } catch (error) {
+        console.log("Error getting items from category: ", error);
+        res.status(500).json({ success: false, message: "No items in category found" });
     }
 }
 
