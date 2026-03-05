@@ -3,6 +3,7 @@ import { useParams } from 'react-router'
 import Header from '../components/common/Header';
 import ItemCard from '../components/Card/ItemCard';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 const ItemsPage = ({ cart, setCart }) => {
     const [items, setItems] = useState([]);
@@ -25,6 +26,7 @@ const ItemsPage = ({ cart, setCart }) => {
     }, []);
 
     const addToCart = (item) => {
+        toast.success("Item added to cart");
         setCart([...cart, item]);
     }
 
