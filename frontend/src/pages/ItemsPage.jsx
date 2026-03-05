@@ -6,16 +6,17 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 import WindowAlert from '../components/common/WindowAlert';
 
-const ItemsPage = ({ cart, setCart }) => {
+const ItemsPage = ({ cart, setCart, url }) => {
     const [items, setItems] = useState([]);
 
     let { category } = useParams();
-    console.log(category);
+    // console.log(category);
+    // `${url}/${category}/items`;
     
     useEffect(() => {
         const getItems = async () => {
             try {
-                const req = await fetch(`http://localhost:5000/api/category/${category}/items`);
+                const req = await fetch(`${url}/${category}/items`);
                 const res = await req.json();
                 setItems(res);
             } catch (error) {
