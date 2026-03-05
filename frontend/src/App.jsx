@@ -14,12 +14,12 @@ function App() {
 
   const [cart, setCart] = useState([]);
   const [categories, setCategories] = useState([]);
-
+  const BASEURL = import.meta.env.DEV ? "http://localhost:5000/api" : "/api";
   
   useEffect(() => {
     const getData = async () => {
       try {
-        const req = await fetch(`http://localhost:5000/api/category`);
+        const req = await fetch(`${BASEURL}/category`);
         const res = await req.json();
         setCategories(res);
       } catch (error) {
@@ -28,7 +28,6 @@ function App() {
     };
 
     getData();
-    // needs to be called when an Item gets added
   }, []);
 
 
@@ -44,7 +43,7 @@ function App() {
         />
         <Route
           path="/categories/:category"
-          element={<ItemsPage cart={cart} setCart={setCart} />}
+          element={<ItemsPage cart={cart} setCart={setCart} url={BASEURL} />}
         />
         <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
         <Route
