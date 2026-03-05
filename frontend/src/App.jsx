@@ -46,7 +46,7 @@ function App() {
           path="/categories/:category"
           element={<ItemsPage cart={cart} setCart={setCart} />}
         />
-        <Route path="/cart" element={<Cart cart={cart} />} />
+        <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
         <Route
           path="/settings"
           element={<Settings categories={categories} />}
