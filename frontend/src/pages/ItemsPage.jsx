@@ -4,6 +4,7 @@ import Header from '../components/common/Header';
 import ItemCard from '../components/Card/ItemCard';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
+import WindowAlert from '../components/common/WindowAlert';
 
 const ItemsPage = ({ cart, setCart }) => {
     const [items, setItems] = useState([]);
@@ -38,7 +39,7 @@ const ItemsPage = ({ cart, setCart }) => {
                 items.length > 0 ?
                 items.map((item) => (
                     <ItemCard key={item._id} item={item} handleAdd={addToCart} />
-                )) : <p>Items not found</p>
+                )) : <WindowAlert />
             }
         </main>
     </div>
