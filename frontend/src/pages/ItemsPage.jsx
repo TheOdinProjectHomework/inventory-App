@@ -16,7 +16,7 @@ const ItemsPage = ({ cart, setCart, url }) => {
     useEffect(() => {
         const getItems = async () => {
             try {
-                const req = await fetch(`${url}/${category}/items`);
+                const req = await fetch(`${url}/category/${category}/items`);
                 const res = await req.json();
                 setItems(res);
             } catch (error) {
