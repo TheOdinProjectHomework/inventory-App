@@ -48,7 +48,7 @@ function App() {
         <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
         <Route
           path="/settings"
-          element={<Settings categories={categories} />}
+          element={<Settings categories={categories} url={BASEURL} />}
         />
       </Routes>
     </div>
