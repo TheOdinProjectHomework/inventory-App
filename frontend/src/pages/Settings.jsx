@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Header from '../components/common/Header'
 import toast from "react-hot-toast";
 
-const Settings = ({ categories }) => {
+const Settings = ({ categories, url }) => {
     const [catName, setCatName] = useState("");
     const [itemName, setItemName] = useState("");
     const [picture, setPicture] = useState("");
@@ -17,7 +17,7 @@ const Settings = ({ categories }) => {
         }
 
         try {
-            const response = await fetch("http://localhost:5000/api/items", {
+            const response = await fetch(`${url}/items`, {
                 method: "POST",
                 headers: { "Content-type": "application/json" },
                 body: JSON.stringify({
@@ -52,7 +52,7 @@ const Settings = ({ categories }) => {
         }
 
         try {
-            const response = await fetch("http://localhost:5000/api/category", {
+            const response = await fetch(`${url}/category`, {
                 method: "POST",
                 headers: { "Content-type": "application/json"},
                 body: JSON.stringify({
